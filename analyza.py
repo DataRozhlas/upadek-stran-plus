@@ -9,23 +9,35 @@ data_volby = pd.read_excel("./data/parlgov.xlsx", sheet_name="election")
 data_party = pd.read_excel("./data/parlgov.xlsx", sheet_name="party")
 
 # %%
-data = data_volby.merge(data_party, on="party_id", how="left")
+data = data_volby.merge(data_party[['party_id', 'family_name']], on="party_id", how="left")
 #%%
 data.election_date = pd.to_datetime(data.election_date, format='%Y-%m-%d')
 
 #%%
-data.columns
-# %%
-chci=["Social democracy", "Conservative", "Liberal", "Communist/Socialist", "Christian democracy", "Agrarian", "Green/Ecologist"]
-data_filter=data[ (data.election_type == "parliament") & (data.election_date >= "1990-01-01" ) & (data.family_name.isin(chci))] 
+data['election_year'] = data.election_date.apply(lambda x: int(str(x).split('-')[0]))
 
 #%%
-data_filter.sort_values(by='election_date', inplace=True)
-data_filter = data_filter[data_filter.vote_share.values >= 5]
+chci=["Social democracy", "Conservative", "Liberal", "Communist/Socialist", "Christian democracy", "Agrarian", "Green/Ecologist"]
+# %%
+data = data[ (data.election_type == "parliament") & (data.election_year >= 1990 )] 
+
+#%%
+
+#%%
+graph_data = []
+for family in data.family_name.unique():
+    family_data = []
+    for year in sorted(list(data.election_year.unique())):
+        tmp = data[ (data.election_year == year) & (data.family_name == family) ]
+        if tmp.vote_share.median() != tmp.vote_share.median():
+            family_data.append(0)
+        else:
+            family_data.append(tmp.vote_share.median())
+    graph_data.append(family_data)
+
+#%%
+plt.stackplot(sorted(list(data.election_year.unique())), graph_data, labels=list(data.family_name.unique()))
+plt.legend(loc='upper left')
+plt.show()
 
 # %%
-for country in data_filter.country_name_x.unique():
-    data_country = data_filter[ data_filter.country_name_x == country ]
-    chrt = sns.lineplot(x='election_date', y='vote_share', data=data_country, hue='family_name', ci=None)
-    chrt.set_title(country)
-    plt.show()
