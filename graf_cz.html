@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+</head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/7.2.0/highcharts.js"></script>
+<div id="cz"></div>
+
+<script>
+var groups = {
+    'křesťanská demokracie': ['Křesťanská a demokratická unie – Československá strana lidová'],
+'komunisti': ['Komunistická strana Cech a Moravy', 'Levý Blok'],
+'konzervativci': ['Občanská demokratická strana', 'Tradice Odpovědnost Prosperita 09', 'Úsvit přímé demokracie', 'Strana svobodných občanů'],
+'zelení': ['Strana zelených'],
+'liberálové': ['Občanská demokratická aliance', 'Demokratická unie','Unie svobody ', 'SNK Evropští demokraté', 'Věci veřejné','Akce nespokojených občanů'],
+'extrémní pravice': ['Sdruzení pro republiku – Republikánská strana Ceskoslovenska','Česká národně strana socialistická','Suverenita – blok Jany Bobošíkové','Dělnická strana sociální spravedlnosti','Svoboda a přímá demokracie Tomio Okamura'],
+'sociální demokracie': ['Česká strana sociálně demokratická','Důchodci za životní jistoty', 'Strana práv občanů – Zemanovci'],
+'jedno téma': ['Starostové a nezávislí', 'Ceska piratska strana']
+}
+
+    Highcharts.chart('cz', {
+    title: {
+        text: 'Výsledky stranických rodin v ČR'
+    },
+    colors: ['#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00'],
+    credits: {
+        enabled: false,
+    },
+    yAxis: {
+        title: {
+            text: 'Podíl hlasů v %'
+        }
+    },
+    tooltip: {
+        formatter: function() {
+            return 'volby ' + this.x + '<br>' + this.series.name + ': ' + Math.round(this.y * 10) / 10 + ' %<br>partaje: ' + groups[this.series.name].join(', ')
+        }
+    },
+    plotOptions: {
+        line: {
+            marker: {
+                enabled: false
+            }
+        },
+        series: {
+            label: {
+                connectorAllowed: false
+            },
+        }
+    },
+    series: [{'name': 'křesťanská demokracie',
+  'data': [[1996, 8.08],
+   [1998, 9.0],
+   [2002, 14.27],
+   [2006, 7.22],
+   [2010, 4.39],
+   [2013, 6.78],
+   [2017, 5.8]],
+  'step': 'right'},
+ {'name': 'komunisti',
+  'data': [[1996, 11.73],
+   [1998, 11.03],
+   [2002, 18.51],
+   [2006, 12.81],
+   [2010, 11.27],
+   [2013, 14.91],
+   [2017, 7.76]],
+  'step': 'right'},
+ {'name': 'konzervativci',
+  'data': [[1996, 29.62],
+   [1998, 27.74],
+   [2002, 24.47],
+   [2006, 35.38],
+   [2010, 36.92],
+   [2013, 29.05],
+   [2017, 18.189999999999998]],
+  'step': 'right'},
+ {'name': 'liberálové',
+  'data': [[1996, 9.16],
+   [1998, 10.049999999999999],
+   [2002, 2.78],
+   [2006, 2.08],
+   [2010, 10.88],
+   [2013, 18.65],
+   [2017, 29.64]],
+  'step': 'right'},
+ {'name': 'extrémní pravice',
+  'data': [[1996, 10.059999999999999],
+   [1998, 3.9],
+   [2010, 4.81],
+   [2017, 10.64]],
+  'step': 'right'},
+ {'name': 'sociální demokracie',
+  'data': [[1996, 29.53],
+   [1998, 35.370000000000005],
+   [2002, 30.2],
+   [2006, 32.32],
+   [2010, 26.409999999999997],
+   [2013, 21.96],
+   [2017, 7.27]],
+  'step': 'right'},
+ {'name': 'zelení',
+  'data': [[1998, 1.12],
+   [2002, 2.36],
+   [2006, 6.29],
+   [2010, 2.44],
+   [2013, 3.19],
+   [2017, 1.46]],
+  'step': 'right'},
+ {'name': 'jedno téma',
+  'data': [[2010, 0.0], [2013, 2.66], [2017, 15.969999999999999]],
+  'step': 'right'}]
+    });
+</script>

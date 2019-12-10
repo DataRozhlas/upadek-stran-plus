@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+</head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/7.2.0/highcharts.js"></script>
+<div id="eu_staty"></div>
+
+<script>
+    Highcharts.chart('eu_staty', {
+    title: {
+        text: 'Výsledky sociální demokracie ve vybraných státech EU'
+    },
+    colors: ['#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00'],
+    credits: {
+        enabled: false,
+    },
+    yAxis: {
+        title: {
+            text: 'Podíl hlasů pro soc-dem strany'
+        }
+    },
+    tooltip: {
+        pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: <b>{point.y:.1f} %</b>'
+    },
+    plotOptions: {
+        line: {
+            marker: {
+                enabled: false
+            }
+        },
+        series: {
+            label: {
+                connectorAllowed: false
+            },
+        }
+    },
+    series: [{'name': 'Česká republika',
+    visible: false,
+  'data': [[1996, 29.53],
+   [1998, 35.370000000000005],
+   [2002, 30.2],
+   [2006, 32.32],
+   [2010, 26.409999999999997],
+   [2013, 21.96],
+   [2017, 7.27]],
+  'step': 'right'},
+ {'name': 'Francie',
+  'data': [[1997, 24.94],
+   [2002, 26.74],
+   [2007, 28.02],
+   [2012, 34.4],
+   [2017, 9.510000000000002]],
+  'step': 'right'},
+ {'name': 'Německo',
+  'data': [[1998, 40.9],
+   [2002, 38.5],
+   [2005, 34.2],
+   [2009, 23.0],
+   [2013, 25.7],
+   [2017, 20.5]],
+  'step': 'right'},
+ {'name': 'Maďarsko',
+ visible: false,
+  'data': [[1998, 32.9],
+   [2002, 42.05],
+   [2006, 43.2],
+   [2010, 19.3],
+   [2014, 25.57],
+   [2018, 17.94]],
+  'step': 'right'},
+ {'name': 'Nizozemsko',
+  'data': [[1998, 28.98],
+   [2002, 15.11],
+   [2003, 27.26],
+   [2006, 21.19],
+   [2010, 19.63],
+   [2012, 24.84],
+   [2017, 5.7]],
+  'step': 'right'},
+ {'name': 'Polsko',
+  'data': [[1997, 31.869999999999997],
+   [2001, 41.04],
+   [2005, 15.190000000000001],
+   [2007, 13.15],
+   [2011, 8.24],
+   [2015, 11.17],
+   [2019, 12.56]],
+  'step': 'right'},
+ {'name': 'Slovensko',
+ visible: false,
+  'data': [[1998, 8.01],
+   [2002, 15.25],
+   [2006, 29.14],
+   [2010, 37.2],
+   [2012, 44.41],
+   [2016, 28.28]],
+  'step': 'right'},
+ {'name': 'Švédsko',
+ visible: false,
+  'data': [[1998, 36.38],
+   [2002, 39.9],
+   [2006, 35.2],
+   [2010, 30.66],
+   [2014, 31.01],
+   [2018, 28.26]],
+  'step': 'right'}]
+    });
+</script>
